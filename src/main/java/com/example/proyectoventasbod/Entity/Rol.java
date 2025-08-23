@@ -1,29 +1,23 @@
 package com.example.proyectoventasbod.Entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "proveedor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Proveedor {
+public class Rol {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    private Integer proveedorId;
-    @Column
+    private int idRol;
     private String nombre;
-    @Column
-    private String telefono;
 
-    @OneToMany(mappedBy = "proveedorId")
-    private java.util.List<Producto> productos;
+    @OneToOne(mappedBy = "rolId")
+    private Empleado empleado;
 }
